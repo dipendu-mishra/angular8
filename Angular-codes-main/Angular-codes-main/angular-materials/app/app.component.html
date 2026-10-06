@@ -1,0 +1,120 @@
+
+<button color="primary" mat-raised-button>Button1</button>
+<button color="accent" mat-raised-button>Button2</button>
+<h2>heading</h2>
+<p>
+  It is a long established fact that a reader will be distracted by the readable 
+  content of a page when looking at its layout. The point of using Lorem Ipsum is 
+  that it has a more-or-less normal distribution of letters, as opposed to using 
+  'Content here, content here', making it look like readable English. Many desktop 
+  publishing packages and web page editors now use Lorem Ipsum as their default model 
+  text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. 
+  Various versions have evolved over the years, sometimes by accident, sometimes on 
+  purpose (injected humour and the like
+</p>
+
+
+<h4>Basic mat-checkbox</h4>
+<mat-checkbox #showDetails [value]="" [checked]="isChecked" (change)="onChange($event)">Show details</mat-checkbox><br>
+
+<div *ngIf="showDetails.checked">details...</div><br>
+
+<h4>Basic mat-radio-button</h4>
+<mat-radio-group aria-label="Select any option" value="2">
+  <mat-radio-button value="1">Male</mat-radio-button>
+  <mat-radio-button value="2">Female</mat-radio-button>
+</mat-radio-group><br>
+
+<h4>Basic mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select [(ngModel)]="food">
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field><br>
+
+<h4>Basic mat-input</h4>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Favorite food</mat-label>
+    <input ngModel #foods="ngModel" name="foods" matInput placeholder="Ex. Pizza" value="Pizza" required>
+    <mat-hint>enter the unique food</mat-hint>
+    <span matSuffix>@food.com</span>
+    <span matPrefix>zafar&nbsp;</span>
+    <mat-error *ngIf="foods.invalid && foods.errors.required">
+      Food is required
+    </mat-error>
+  </mat-form-field><br><br>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field><br><br>
+
+  <h4>Basic mat-input</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input (focus)="picker.open()" [min]="minDate" [max]="maxDate" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker touchUi="true"></mat-datepicker>
+  </mat-form-field><br><br>
+
+  <mat-icon aria-hidden="false" aria-label="Example home icon">add_alert</mat-icon><br><br>
+
+  <section>
+    <div class="example-button-row">
+      <button mat-button>Basic 1</button>
+      <button mat-raised-button>Basic 2</button>
+    </div>
+  </section><br><br>
+  
+  <section>
+    <div class="example-button-row">
+      <button mat-button color="primary">Primary 1</button>
+      <button mat-button color="accent">accent 1</button>
+      <button mat-button color="warn">warn 1</button>
+    </div>
+  </section><br><br>
+
+  <section>
+    <div class="example-button-row">
+      <button mat-raised-button color="primary">Primary 2</button>
+      <button mat-raised-button color="accent">accent 2</button>
+      <button mat-raised-button color="warn">warn 2</button>
+    </div>
+  </section><br><br>
+
+  <section>
+    <div class="example-button-row">
+      <button color="primary" mat-fab >
+        <mat-icon aria-hidden="false" >add_alert</mat-icon>
+      </button>
+      <button mat-fab >
+        <mat-icon aria-hidden="false" >home</mat-icon>
+      </button>
+      <button mat-fab >
+        <mat-icon aria-hidden="false" >menu</mat-icon>
+      </button>
+      <button mat-fab >
+        <mat-icon aria-hidden="false" >check</mat-icon>
+      </button>
+    </div>
+  </section><br><br>
+
+  <mat-chip-list aria-label="Fish selection">
+    <mat-chip
+      *ngFor="let category of categories"
+      (click)="selectCatagory(category)"
+      [selected]="category.selected"
+    >
+      {{category.name}}
+    </mat-chip>
+  </mat-chip-list><br><br>
+
+  <mat-spinner></mat-spinner><br><br>
+  <mat-progress-bar mode="determinate" value="40"></mat-progress-bar><br><br>
+  <mat-progress-bar mode="indeterminate" value="40"></mat-progress-bar>
+</form>
+
